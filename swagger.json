@@ -1,0 +1,153 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Authentication API",
+    "description": " # Overview\nPosti API uses OAuth 2.0 protocol for authentication and authorization. The OAuth 2.0 is a secure and standard authentication protocol that provides sending authorized requests to the Posti API services.\nThe authentication flow follows these steps:\n1. A client application uses Posti service account username and password via HTTP Basic Authentication to exchange these credentials for an access token\n2. When accessing the protected API service, the client application uses the access token to authenticate\n\n# How to get Posti service account\nIf your business does not have a Posti service account, contact Posti Customer Service yritysasiakaspalvelu@posti.com to get one. Note that you also need a contract with Posti.\n\n# How to test Posti service account\nReplace accountname:secret using Posti service account details which Posti has provided to you. ",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/oauth2",
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "flow": "application",
+      "tokenUrl": "https://example.com/oauth/token",
+      "scopes": {
+        "read": "Grants read access",
+        "write": "Grants write access",
+        "admin": "Grants read and write access to administrative information"
+      }
+    },
+    "Basic": {
+      "type": "basic"
+    }
+  },
+  "paths": {
+    "/token": {
+      "post": {
+        "summary": "Request Access Token",
+        "description": "Partner makes a request to the token endpoint by adding the\nfollowing parameters describerd  below\n",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "grant_type",
+            "in": "formData",
+            "description": "Value MUST be set to \"client_credentials\" as per RFC",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "client_credentials"
+            ]
+          }
+        ],
+        "tags": [
+          "Oauth2"
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorisation token (Bearer)",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            },
+            "examples": {
+              "application/json": "{\n   \"access_token\":\"2YotnFZFEjr1zCsicMWpAA\",\n   \"token_type\":\"Bearer\",\n   \"expires_in\":3600,\n }"
+            }
+          },
+          "400": {
+            "description": "As per RFC authorisation server responds with 400 in case of error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "examples": {
+              "application/json": "{\n  \"error\":\"invalid_request\"\n}"
+            }
+          }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Invalidate access token",
+        "tags": [
+          "Oauth2"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empty body with 200 code"
+          },
+          "403": {
+            "description": "Access Token already invalidated or not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Token": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string",
+          "description": "The access token value"
+        },
+        "token_type": {
+          "type": "string",
+          "enum": [
+            "Bearer"
+          ],
+          "description": "Type of the token is set to \"Bearer\""
+        },
+        "expires_in": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The lifetime in seconds of the access token"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "enum": [
+            "invalid_request",
+            "invalid_client",
+            "invalid_grant",
+            "unauthorized_client",
+            "unsupported_grant_type"
+          ]
+        },
+        "error_description": {
+          "type": "string",
+          "description": "Human-readable text providing additional information"
+        },
+        "error_uri": {
+          "type": "string",
+          "description": "A URI identifying a human-readable web page with information about the error"
+        }
+      }
+    }
+  }
+}
