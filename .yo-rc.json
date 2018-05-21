@@ -1,0 +1,11 @@
+{
+  "generator-openapi-repo": {
+    "importExistingSpec": true,
+    "importedSpec": "C:\\Users\\jaiivari1\\Projects\\Customers\\Posti\\start.json",
+    "name": "Posti SCS",
+    "repo": "jiivari/PostiAPI",
+    "splitSpec": false,
+    "samples": true,
+    "installSwaggerUI": false
+  }
+}
