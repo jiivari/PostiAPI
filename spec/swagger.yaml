@@ -1,8 +1,26 @@
 swagger: '2.0'
 info:
-  title: Authentication API
+  title: Posti SCS API
   description: '
-    # Overview
+    # Welcome to the Posti API
+
+    Get connected with us!
+
+    ## Overview
+
+    The Posti APIs provide programmatic access to read and write Store and Drop Shipping related data.
+
+    The Posti API identifies client applications and users using OAuth 2.0. The responses from Posti API are available in JSON.
+
+    In order to get started with Posti API, please refer to the tutorials in the navigation bar.
+
+    For list of available APIs, please refer API descriptions in the navigation bar.
+
+    ### Feedback
+
+    If you find any issues with the new version of the API, please send us an email to postiapisupport@posti.com.
+
+    # Authentication
 
     Posti API uses OAuth 2.0 protocol for authentication and authorization. The OAuth 2.0 is a secure and standard authentication protocol that provides sending authorized requests to the Posti API services.
 
@@ -12,21 +30,15 @@ info:
 
     2. When accessing the protected API service, the client application uses the access token to authenticate
 
-
-    # How to get Posti service account
+    ## How to get Posti service account
 
     If your business does not have a Posti service account, contact Posti Customer Service yritysasiakaspalvelu@posti.com to get one. Note that you also need a contract with Posti.
-
-
-    # How to test Posti service account
-
-    Replace accountname:secret using Posti service account details which Posti has provided to you.
     '
   version: "1.0.0"
-host: localhost:3000
+host: oauth.posti.fi
 schemes:
   - https
-basePath: /oauth2
+basePath: /oauth
 produces:
   - application/json
 securityDefinitions:
@@ -45,8 +57,19 @@ paths:
     post:
       summary: Request Access Token
       description: |
-        Partner makes a request to the token endpoint by adding the
-        following parameters describerd  below
+        ### Accessing Posti API services
+        **Step 1:** Encode username and password
+        Concatenate the username, a colon character ":", and the password into a single string. After that, Base64 encode the single string.
+
+        Credentials:
+        accountname:secret
+        Base64 encoded value:
+        YWNjb3VudG5hbWU6c2VjcmV0
+
+        **Step 2:** Get access token from Authorization Server
+        Before your application can access Posti API services, it must obtain an access token that grants access to the services. A single access token can grant access to multiple services where you have authorization.
+
+        The value calculated in Step 1 must be exchanged for a access token by making a HTTP POST request to Authorization Server's access token endpoint. The request must include an Authorization header with the value of "Basic <Base64 encoded value from Step 1>". Url parameter grant_type=client_credentials must also be included to the request.
       consumes:
         - application/x-www-form-urlencoded
       produces:
