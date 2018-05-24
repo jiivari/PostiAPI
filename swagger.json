@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Posti SCS API",
-    "description": " # Welcome to the Posti API\nGet connected with us!\n## Overview\nThe Posti APIs provide programmatic access to read and write Store and Drop Shipping related data.\nThe Posti API identifies client applications and users using OAuth 2.0. The responses from Posti API are available in JSON.\nIn order to get started with Posti API, please refer to the tutorials in the navigation bar.\nFor list of available APIs, please refer API descriptions in the navigation bar.\n### Feedback\nIf you find any issues with the new version of the API, please send us an email to postiapisupport@posti.com.\n# Authentication\nPosti API uses OAuth 2.0 protocol for authentication and authorization. The OAuth 2.0 is a secure and standard authentication protocol that provides sending authorized requests to the Posti API services.\nThe authentication flow follows these steps:\n1. A client application uses Posti service account username and password via HTTP Basic Authentication to exchange these credentials for an access token\n2. When accessing the protected API service, the client application uses the access token to authenticate\n## How to get Posti service account\nIf your business does not have a Posti service account, contact Posti Customer Service yritysasiakaspalvelu@posti.com to get one. Note that you also need a contract with Posti. ",
+    "title": "Posti WMS API",
+    "description": "# Welcome to the Posti API\nGet connected with us!\n## Overview\nThe Posti APIs provide programmatic access to read and write Store and Drop Shipping related data.\nThe Posti API identifies client applications and users using OAuth 2.0. The responses from Posti API are available in JSON.\nIn order to get started with Posti API, please refer to the tutorials in the navigation bar.\nFor list of available APIs, please refer API descriptions in the navigation bar.\n### Feedback\nIf you find any issues with the new version of the API, please send us an email to postiapisupport@posti.com.\n# Authentication\nPosti API uses OAuth 2.0 protocol for authentication and authorization. The OAuth 2.0 is a secure and standard authentication protocol that provides sending authorized requests to the Posti API services.\nThe authentication flow follows these steps:\n1. A client application uses Posti service account username and password via HTTP Basic Authentication to exchange these credentials for an access token\n2. When accessing the protected API service, the client application uses the access token to authenticate\n## How to get Posti service account\nIf your business does not have a Posti service account, contact Posti Customer Service yritysasiakaspalvelu@posti.com to get one. Note that you also need a contract with Posti.\n",
     "version": "1.0.0"
   },
   "host": "oauth.posti.fi",
@@ -73,6 +73,10 @@
               "application/json": "{\n  \"error\":\"invalid_request\"\n}"
             }
           }
+        },
+        "externalDocs": {
+          "url": "http://api.example.com/docs/user-operations/",
+          "description": "Learn more about User operations provided by this API."
         },
         "security": [
           {
