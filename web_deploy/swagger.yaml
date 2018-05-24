@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  title: Posti SCS API
-  description: |2-
-     # Welcome to the Posti API
+  title: Posti WMS API
+  description: |
+    # Welcome to the Posti API
     Get connected with us!
     ## Overview
     The Posti APIs provide programmatic access to read and write Store and Drop Shipping related data.
@@ -17,7 +17,7 @@ info:
     1. A client application uses Posti service account username and password via HTTP Basic Authentication to exchange these credentials for an access token
     2. When accessing the protected API service, the client application uses the access token to authenticate
     ## How to get Posti service account
-    If your business does not have a Posti service account, contact Posti Customer Service yritysasiakaspalvelu@posti.com to get one. Note that you also need a contract with Posti. 
+    If your business does not have a Posti service account, contact Posti Customer Service yritysasiakaspalvelu@posti.com to get one. Note that you also need a contract with Posti.
   version: 1.0.0
 host: oauth.posti.fi
 schemes:
@@ -89,6 +89,9 @@ paths:
               {
                 "error":"invalid_request"
               }
+      externalDocs:
+        url: 'http://api.example.com/docs/user-operations/'
+        description: Learn more about User operations provided by this API.
       security:
         - Basic: []
     delete:

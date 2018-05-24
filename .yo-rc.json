@@ -6,6 +6,6 @@
     "repo": "jiivari/PostiAPI",
     "splitSpec": false,
     "samples": true,
-    "installSwaggerUI": false
+    "installSwaggerUI": true
   }
 }

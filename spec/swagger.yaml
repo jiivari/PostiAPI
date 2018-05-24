@@ -1,8 +1,7 @@
 swagger: '2.0'
 info:
-  title: Posti SCS API
-  description: '
-    # Welcome to the Posti API
+  title: Posti WMS API
+  description: '# Welcome to the Posti API
 
     Get connected with us!
 
@@ -33,6 +32,7 @@ info:
     ## How to get Posti service account
 
     If your business does not have a Posti service account, contact Posti Customer Service yritysasiakaspalvelu@posti.com to get one. Note that you also need a contract with Posti.
+
     '
   version: "1.0.0"
 host: oauth.posti.fi
@@ -105,6 +105,9 @@ paths:
               {
                 "error":"invalid_request"
               }
+      externalDocs:
+        url: http://api.example.com/docs/user-operations/
+        description: Learn more about User operations provided by this API.
       security:
         - Basic: []
     delete:
