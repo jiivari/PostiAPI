@@ -1,5 +1,5 @@
 # Dir for API portal deploy
-# web_deploy
+web_deploy
 
 # Logs
 logs
@@ -19,9 +19,6 @@ coverage
 
 # node-waf configuration
 .lock-wscript
-
-#editors files
-.idea/*
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
