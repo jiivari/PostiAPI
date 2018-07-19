@@ -1,0 +1,580 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "/estimation/v1",
+  "produces": ["application/json"],
+  "apis": [{
+    "path": "/estimation/v1/alternatives/{startLocation}/{startCountry}/{toLocation}/{toCountry}/{product}",
+    "description": "getAlternativeDeliveryTimeEstimationsV1",
+    "operations": [{
+      "method": "GET",
+      "summary": "Get all delivery time estimation for every logistic phase resolved for tracking events. Should be used only for analytics.",
+      "notes": "Single estimation ISO8601 dateTime for product from postal code to postal code.",
+      "type": "DeliveryTimeEstimationResponseDTO",
+      "nickname": "getAlternativeDeliveryTimeEstimationsV1",
+      "produces": ["application/json"],
+      "parameters": [{
+        "name": "startLocation",
+        "description": "Postal code. E.g. 00100",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "startCountry",
+        "description": "ISO Country Code, 2 Digit. E.g FI, SE, GB",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "toLocation",
+        "description": "Postal code. E.g. 00100",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "toCountry",
+        "description": "ISO Country Code, 2 Digit. E.g FI, SE, GB",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "product",
+        "description": "Product id. E.g. 2101",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "customer",
+        "description": "Customer id or contract id.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "time",
+        "description": "ISO Date time when delivery will be or was in start location. E.g 2014-05-16T14:31:14.558Z.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "logisticPhase",
+        "description": "Time machine logistic phase where the item should be at given time.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false,
+        "enum": ["AVAILABLE_FOR_PICKUP", "PICKED_UP", "SORTED", "IN_TRANSPORT", "IN_DELIVERY"]
+      }, {
+        "name": "service",
+        "description": "Additional service. E.g. saturday delivery or morning delivery.",
+        "defaultValue": "",
+        "required": false,
+        "type": "List",
+        "paramType": "query",
+        "allowMultiple": true
+      }, {
+        "name": "verbose",
+        "description": "Verbose response with logistic phases. Use with caution in production. May generate heavy traffic.",
+        "defaultValue": "",
+        "required": false,
+        "type": "boolean",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "estimationParams",
+        "description": "Params from TR tracking system as HTTP POST body",
+        "defaultValue": "",
+        "required": false,
+        "type": "EstimationParamsDTO",
+        "paramType": "body",
+        "allowMultiple": false
+      }],
+      "responseMessages": [{
+        "code": 200,
+        "message": "OK",
+        "responseModel": "DeliveryTimeEstimationResponseDTO"
+      }, {
+        "code": 401,
+        "message": "Unauthorized"
+      }, {
+        "code": 403,
+        "message": "Forbidden"
+      }, {
+        "code": 404,
+        "message": "Not Found"
+      }],
+      "deprecated": "false"
+    }, {
+      "method": "POST",
+      "summary": "Get all delivery time estimation for every logistic phase resolved for tracking events. Should be used only for analytics.",
+      "notes": "Single estimation ISO8601 dateTime for product from postal code to postal code.",
+      "type": "DeliveryTimeEstimationResponseDTO",
+      "nickname": "getAlternativeDeliveryTimeEstimationsV1",
+      "produces": ["application/json"],
+      "parameters": [{
+        "name": "startLocation",
+        "description": "Postal code. E.g. 00100",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "startCountry",
+        "description": "ISO Country Code, 2 Digit. E.g FI, SE, GB",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "toLocation",
+        "description": "Postal code. E.g. 00100",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "toCountry",
+        "description": "ISO Country Code, 2 Digit. E.g FI, SE, GB",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "product",
+        "description": "Product id. E.g. 2101",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "customer",
+        "description": "Customer id or contract id.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "time",
+        "description": "ISO Date time when delivery will be or was in start location. E.g 2014-05-16T14:31:14.558Z.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "logisticPhase",
+        "description": "Time machine logistic phase where the item should be at given time.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false,
+        "enum": ["AVAILABLE_FOR_PICKUP", "PICKED_UP", "SORTED", "IN_TRANSPORT", "IN_DELIVERY"]
+      }, {
+        "name": "service",
+        "description": "Additional service. E.g. saturday delivery or morning delivery.",
+        "defaultValue": "",
+        "required": false,
+        "type": "List",
+        "paramType": "query",
+        "allowMultiple": true
+      }, {
+        "name": "verbose",
+        "description": "Verbose response with logistic phases. Use with caution in production. May generate heavy traffic.",
+        "defaultValue": "",
+        "required": false,
+        "type": "boolean",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "estimationParams",
+        "description": "Params from TR tracking system as HTTP POST body",
+        "defaultValue": "",
+        "required": false,
+        "type": "EstimationParamsDTO",
+        "paramType": "body",
+        "allowMultiple": false
+      }],
+      "responseMessages": [{
+        "code": 200,
+        "message": null,
+        "responseModel": "DeliveryTimeEstimationResponseDTO"
+      }, {
+        "code": 201,
+        "message": "Created"
+      }, {
+        "code": 401,
+        "message": "Unauthorized"
+      }, {
+        "code": 403,
+        "message": "Forbidden"
+      }, {
+        "code": 404,
+        "message": "Not Found"
+      }],
+      "deprecated": "false"
+    }]
+  }, {
+    "path": "/estimation/v1/{startLocation}/{startCountry}/{toLocation}/{toCountry}/{product}",
+    "description": "getDeliveryTimeEstimationV1",
+    "operations": [{
+      "method": "GET",
+      "summary": "Get delivery time estimation v1",
+      "notes": "Single estimation ISO8601 dateTime for product from postal code to postal code.",
+      "type": "DeliveryTimeEstimationResponseDTO",
+      "nickname": "getDeliveryTimeEstimationV1",
+      "produces": ["application/json"],
+      "parameters": [{
+        "name": "startLocation",
+        "description": "Postal code. E.g. 00100",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "startCountry",
+        "description": "ISO Country Code, 2 Digit. E.g FI, SE, GB",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "toLocation",
+        "description": "Postal code. E.g. 00100",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "toCountry",
+        "description": "ISO Country Code, 2 Digit. E.g FI, SE, GB",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "product",
+        "description": "Product id. E.g. 2101",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "customer",
+        "description": "Customer id or contract id.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "time",
+        "description": "ISO Date time when delivery will be or was in start location. E.g 2014-05-16T14:31:14.558Z.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "logisticPhase",
+        "description": "Time machine logistic phase where the item should be at given time.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false,
+        "enum": ["AVAILABLE_FOR_PICKUP", "PICKED_UP", "SORTED", "IN_TRANSPORT", "IN_DELIVERY"]
+      }, {
+        "name": "service",
+        "description": "Additional service. E.g. saturday delivery or morning delivery.",
+        "defaultValue": "",
+        "required": false,
+        "type": "List",
+        "paramType": "query",
+        "allowMultiple": true
+      }, {
+        "name": "verbose",
+        "description": "Verbose response with logistic phases. Use with caution in production. May generate heavy traffic.",
+        "defaultValue": "",
+        "required": false,
+        "type": "boolean",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "estimationParams",
+        "description": "Params from TR tracking system as HTTP POST body.",
+        "defaultValue": "",
+        "required": false,
+        "type": "EstimationParamsDTO",
+        "paramType": "body",
+        "allowMultiple": false
+      }],
+      "responseMessages": [{
+        "code": 200,
+        "message": "OK",
+        "responseModel": "DeliveryTimeEstimationResponseDTO"
+      }, {
+        "code": 401,
+        "message": "Unauthorized"
+      }, {
+        "code": 403,
+        "message": "Forbidden"
+      }, {
+        "code": 404,
+        "message": "Not Found"
+      }],
+      "deprecated": "false"
+    }, {
+      "method": "POST",
+      "summary": "Get delivery time estimation v1",
+      "notes": "Single estimation ISO8601 dateTime for product from postal code to postal code.",
+      "type": "DeliveryTimeEstimationResponseDTO",
+      "nickname": "getDeliveryTimeEstimationV1",
+      "produces": ["application/json"],
+      "parameters": [{
+        "name": "startLocation",
+        "description": "Postal code. E.g. 00100",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "startCountry",
+        "description": "ISO Country Code, 2 Digit. E.g FI, SE, GB",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "toLocation",
+        "description": "Postal code. E.g. 00100",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "toCountry",
+        "description": "ISO Country Code, 2 Digit. E.g FI, SE, GB",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "product",
+        "description": "Product id. E.g. 2101",
+        "defaultValue": "",
+        "required": true,
+        "type": "string",
+        "paramType": "path",
+        "allowMultiple": false
+      }, {
+        "name": "customer",
+        "description": "Customer id or contract id.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "time",
+        "description": "ISO Date time when delivery will be or was in start location. E.g 2014-05-16T14:31:14.558Z.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "logisticPhase",
+        "description": "Time machine logistic phase where the item should be at given time.",
+        "defaultValue": "",
+        "required": false,
+        "type": "string",
+        "paramType": "query",
+        "allowMultiple": false,
+        "enum": ["AVAILABLE_FOR_PICKUP", "PICKED_UP", "SORTED", "IN_TRANSPORT", "IN_DELIVERY"]
+      }, {
+        "name": "service",
+        "description": "Additional service. E.g. saturday delivery or morning delivery.",
+        "defaultValue": "",
+        "required": false,
+        "type": "List",
+        "paramType": "query",
+        "allowMultiple": true
+      }, {
+        "name": "verbose",
+        "description": "Verbose response with logistic phases. Use with caution in production. May generate heavy traffic.",
+        "defaultValue": "",
+        "required": false,
+        "type": "boolean",
+        "paramType": "query",
+        "allowMultiple": false
+      }, {
+        "name": "estimationParams",
+        "description": "Params from TR tracking system as HTTP POST body.",
+        "defaultValue": "",
+        "required": false,
+        "type": "EstimationParamsDTO",
+        "paramType": "body",
+        "allowMultiple": false
+      }],
+      "responseMessages": [{
+        "code": 200,
+        "message": null,
+        "responseModel": "DeliveryTimeEstimationResponseDTO"
+      }, {
+        "code": 201,
+        "message": "Created"
+      }, {
+        "code": 401,
+        "message": "Unauthorized"
+      }, {
+        "code": 403,
+        "message": "Forbidden"
+      }, {
+        "code": 404,
+        "message": "Not Found"
+      }],
+      "deprecated": "false"
+    }]
+  }],
+  "models": {
+    "TrEventDTO": {
+      "id": "TrEventDTO",
+      "description": "",
+      "required": ["scanTime", "eventType", "office", "country"],
+      "extends": "",
+      "properties": {
+        "scanTime": {
+          "type": "string",
+          "description": "ISO Date time e.g 2014-05-16T14:31:14.558Z"
+        },
+        "eventType": {
+          "type": "string",
+          "description": "Tracking system event. e.g LAN, LAJ, HYL"
+        },
+        "office": {
+          "type": "string",
+          "description": "Event location"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country code"
+        }
+      }
+    },
+    "DeliveryTimeEstimationResponseDTO": {
+      "id": "DeliveryTimeEstimationResponseDTO",
+      "description": "Response model object",
+      "required": ["deliveryTime"],
+      "extends": "",
+      "properties": {
+        "estimationResult": {
+          "type": "string",
+          "description": "Value shown when verbose=true",
+          "enum": ["DELIVERED", "ESTIMATED_DELIVERED", "NO_SERVICE", "NO_ESTIMATION", "ESTIMATION_FAILED", "UNKNOWN"]
+        },
+        "logisticPhases": {
+          "type": "array",
+          "description": "Value shown when verbose=true",
+          "items": {
+            "$ref": "LogisticPhase"
+          }
+        },
+        "estimationExceptions": {
+          "type": "array",
+          "description": "Description of the phases that are late",
+          "items": {
+            "$ref": "EstimationExceptionDTO"
+          }
+        },
+        "deliveryTime": {
+          "type": "string",
+          "description": "Estimated delivery time in ISO format. This is the main response of Estimation API"
+        },
+        "message": {
+          "type": "string",
+          "description": "Value shown when verbose=true"
+        }
+      }
+    },
+    "EstimationExceptionDTO": {
+      "id": "EstimationExceptionDTO",
+      "description": "",
+      "required": ["toPhaseType", "toPhaseLocation", "toPhaseCountry", "transitionType", "description"],
+      "extends": "",
+      "properties": {
+        "toPhaseType": {
+          "type": "string",
+          "description": "Transition to phase type",
+          "enum": ["UNKNOWN", "ORDERED", "AVAILABLE_FOR_PICKUP", "PICKED_UP", "IN_INSPECTION", "SORTED", "IN_INBOUND_SORTING", "IN_INTERNATIONAL_TRANSPORT", "IN_TRANSPORT", "IN_DELIVERY", "DELIVERED", "WAITING_DELIVERY", "NOT_DELIVERED", "NO_SERVICE"]
+        },
+        "toPhaseLocation": {
+          "type": "string",
+          "description": "Transition to phase location"
+        },
+        "toPhaseCountry": {
+          "type": "string",
+          "description": "Transition to phase country"
+        },
+        "transitionType": {
+          "type": "string",
+          "description": "Transition type",
+          "enum": ["NOT_AVAILABLE", "PICKUP", "TO_SORTING", "TO_DELIVERY", "OUTBOUND_SORTING", "INBOUND_SORTING", "TRANSPORT", "INSPECT", "DELIVERY"]
+        },
+        "description": {
+          "type": "string",
+          "description": "Exception description. Typically caution that some phase is late."
+        }
+      }
+    },
+    "EstimationParamsDTO": {
+      "id": "EstimationParamsDTO",
+      "description": "",
+      "required": ["events"],
+      "extends": "",
+      "properties": {
+        "events": {
+          "type": "array",
+          "description": "Tracking system events",
+          "items": {
+            "$ref": "TrEventDTO"
+          }
+        },
+        "itemId": {
+          "type": "string",
+          "description": "Tracked item identification. Used only for estimation diagnostics."
+        }
+      }
+    }
+  }
+}
